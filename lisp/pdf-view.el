@@ -911,7 +911,7 @@ See also `pdf-view-set-slice-from-bounding-box'."
   "Return the image type that should be used.
 
 The return value is either `imagemagick' (if available and wanted
-or if png is not available) or `png'.
+or if png is not available), image-io (on the Mac port), or `png'.
 
 Signal an error, if neither `imagemagick' nor `png' is available.
 
@@ -1418,7 +1418,8 @@ This is more useful for commands like
               `(,(car colors) ,(cdr colors) 0.35 ,@region))
            (pdf-info-renderpage-text-regions
             page width nil nil
-            `(,(car colors) ,(cdr colors) ,@region)))))))
+            `(,(car colors) ,(cdr colors) ,@region)))
+       :width width))))
 
 (defun pdf-view-kill-ring-save ()
   "Copy the region to the `kill-ring'."
